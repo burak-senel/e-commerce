@@ -41,20 +41,21 @@ function Header() {
       {/* NavbarBottom */}
       <div className="flex justify-between items-center px-[1.5em] max-w-[1440px] mx-auto md:flex-col flex-wrap">
         <nav className="inline-flex items-center gap-[2rem] w-full justify-between md:flex-wrap">
-          <div className="flex py-4  md:inline-flex">
-            <Link to={"/"}>
-              <h3 className="text-2xl font-bold">xBoutique</h3>
-            </Link>
-          </div>
+          <div className="flex gap-[2rem]">
+            <div className="flex py-4  md:inline-flex">
+              <Link to={"/"}>
+                <h3 className="text-2xl font-bold">xBoutique</h3>
+              </Link>
+            </div>
 
-          <div className="flex gap-[1rem] font-bold text-[#737373] text-sm ml-20 md:ml-0 md:flex-col md:w-full md:items-center md:text-xl md:order-last md:mb-12 items-center md:hidden">
-            <Link to={"/"}>Home</Link>
-            <span>Shop</span>
-            <Link to={"/about"}>About</Link>
-            <Link to={"/contact"}>Contact</Link>
-            {/* <Link to={"/product"}>Pages</Link> */}
+            <div className="flex gap-[1rem] font-bold text-[#737373] text-sm ml-20 md:ml-0 md:flex-col md:w-full md:items-center md:text-xl md:order-last md:mb-12 items-center md:hidden">
+              <Link to={"/"}>Home</Link>
+              <span>Shop</span>
+              <Link to={"/about"}>About</Link>
+              <Link to={"/contact"}>Contact</Link>
+              {/* <Link to={"/product"}>Pages</Link> */}
+            </div>
           </div>
-
           {/* Mobil ekran da burger menuye tıklandığın da, headerın açılıp/kapanması.*/}
           {isOpen && (
             <div className="flex gap-[1rem] font-bold text-[#737373] text-sm ml-20 md:ml-0 md:flex-col md:w-full md:items-center md:text-xl md:order-last md:mb-12 items-center">
