@@ -60,7 +60,7 @@ function Header() {
           {isOpen && (
             <div className="flex gap-[1rem] font-bold text-[#737373] text-sm ml-20 md:ml-0 md:flex-col md:w-full md:items-center md:text-xl md:order-last md:mb-12 items-center">
               <Link to={"/"}>Home</Link>
-              <span>SHOP</span>
+              <span>Shop</span>
               <Link to={"/about"}>About</Link>
               <Link to={"/contact"}>Contact</Link>
               {/* Diğer menü öğeleri burada yer alacak */}
