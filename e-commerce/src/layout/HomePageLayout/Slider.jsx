@@ -40,9 +40,9 @@ function Slider() {
           />
         ))}
       </div>
-      <div className="absolute top-0 flex max-w-[1044px] max-h-[680px] w-full h-full items-center ">
+      <div className="absolute top-0 left-36 md:left-0 flex max-w-[1044px] max-h-[680px] w-full h-full items-center ">
         <div className="flex flex-col gap-8 md:items-center md:mx-auto">
-          <h5 className="font-semibold text-white ">SUMMER 2020</h5>
+          <h5 className="font-semibold text-white ">SUMMER 2024</h5>
           <h1 className="flex font-bold text-6xl text-white md:max-w-80 md:text-[40px] md:flex-col md:text-center">
             NEW COLLECTION
           </h1>
