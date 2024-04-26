@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import img1 from "../../assets/HomeAssets/carouselimg1.jpeg";
 function Slider() {
@@ -25,7 +25,13 @@ function Slider() {
   const goToSlide = (index) => {
     setCurrentIndex(index);
   };
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      goToNextSlide();
+    }, 5000);
 
+    return () => clearTimeout(timer);
+  }, [currentIndex]);
   return (
     <div className="relative ">
       <div className="overflow-hidden max-h-[716px] h-screen ">
