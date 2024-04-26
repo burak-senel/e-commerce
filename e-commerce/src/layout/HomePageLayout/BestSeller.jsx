@@ -1,14 +1,20 @@
 import React from "react";
+import { useData } from "../../context/context";
+import ProductCard from "../../components/HomePageComponents/ProductCard";
 
 function BestSeller() {
+  const { bestSellerData } = useData();
+
   return (
     <div className="max-w-[1050px] mx-auto">
       <div className="flex flex-col items-center gap-4 my-16">
-        <h5 className="text-xl text-primary-gray">Featured Products</h5>
+        <h5 className="text-xl font-medium text-secondarygray">
+          Featured Products
+        </h5>
         <h3 className="text-2xl font-bold md:max-w-60 md:text-center">
           BEST SELLER PRODUCTS
         </h3>
-        <p className="text-sm text-primary-gray md:max-w-60 md:text-center">
+        <p className="text-sm  text-secondarygray md:max-w-60 md:text-center">
           Problems trying to resolve the conflict between
         </p>
       </div>

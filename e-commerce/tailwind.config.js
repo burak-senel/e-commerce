@@ -8,6 +8,8 @@ export default {
     extend: {
       colors: {
         secondarygray: "#737373",
+        productgreen: "#23856D",
+        mutedgray: "#BDBDBD",
       },
     },
     screens: {

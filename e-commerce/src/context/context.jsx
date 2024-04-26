@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import * as data from "../data"; // footerData'yı doğrudan içeri aktarın
+import * as data from "../data"; //
 const DataContext = createContext();
 
 export const DataContextProvider = ({ children }) => {
