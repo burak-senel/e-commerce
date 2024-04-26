@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
+import img1 from "../../assets/HomeAssets/carouselimg1.jpeg";
 function Slider() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const images = [
+    img1,
     "https://picsum.photos/840/480/",
     "https://picsum.photos/640/400/",
-    "https://picsum.photos/640/300/",
   ];
 
   const goToNextSlide = () => {
@@ -34,7 +34,7 @@ function Slider() {
             key={index}
             src={image}
             alt={`Slide ${index}`}
-            className={`object-cover absolute top-0 left-0 w-full h-full transform transition-all duration-300 ${
+            className={`object-cover object-top absolute w-full h-full transform transition-all duration-300 ${
               index === currentIndex ? "opacity-100" : "opacity-0"
             }`}
           />
