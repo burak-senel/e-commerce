@@ -11,6 +11,7 @@ export default {
         productgreen: "#23856D",
         mutedgray: "#BDBDBD",
         buttongreen: "#2DC071",
+        buttonblue: "#23A6F0",
       },
     },
     screens: {
