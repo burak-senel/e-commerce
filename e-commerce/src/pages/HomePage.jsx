@@ -1,7 +1,8 @@
 import React from "react";
-import Slider from "../layout/HomePageLayout/Slider";
+import Slider from "../components/HomePageComponents/Slider";
 import EditorsPick from "../layout/HomePageLayout/EditorsPick";
 import BestSeller from "../layout/HomePageLayout/BestSeller";
+import SliderBottom from "../components/HomePageComponents/SliderBottom";
 
 function HomePage() {
   return (
@@ -9,6 +10,7 @@ function HomePage() {
       <Slider />
       <EditorsPick />
       <BestSeller />
+      <SliderBottom />
     </>
   );
 }

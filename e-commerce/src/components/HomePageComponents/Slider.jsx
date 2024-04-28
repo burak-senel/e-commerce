@@ -59,7 +59,7 @@ function Slider() {
           <div className="flex justify-start ">
             <Link
               to="/shop"
-              className="text-white font-bold text-xl bg-[#2DC071] p-4 rounded-md"
+              className="text-white font-bold text-xl bg-buttongreen p-4 rounded-md"
             >
               SHOP NOW
             </Link>
@@ -86,7 +86,7 @@ function Slider() {
         {images.map((_, index) => (
           <button
             key={index}
-            className={`w-20 h-2 mx-1  bg-black ${
+            className={`w-20 h-2 mx-0.5  bg-black ${
               index === currentIndex ? "opacity-100" : "opacity-50"
             }`}
             onClick={() => goToSlide(index)}

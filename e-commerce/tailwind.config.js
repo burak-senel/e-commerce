@@ -10,6 +10,7 @@ export default {
         secondarygray: "#737373",
         productgreen: "#23856D",
         mutedgray: "#BDBDBD",
+        buttongreen: "#2DC071",
       },
     },
     screens: {
