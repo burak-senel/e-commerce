@@ -3,9 +3,10 @@ import FooterClients from "../components/FooterClients";
 import { Link } from "react-router-dom";
 import { useData } from "../context/context";
 import ProductCard from "../components/HomePageComponents/ProductCard";
+import CategoryCard from "../components/CategoryCard";
 
 function ShopPage() {
-  const { bestSellerData } = useData();
+  const { bestSellerData, CategoryCardData } = useData();
 
   return (
     <div className=" bg-[#FAFAFA] md:py-8">
@@ -23,6 +24,16 @@ function ShopPage() {
           </div>
         </div>
 
+        {/*CategoryCard*/}
+        <div className="md:flex-col md:gap-4 flex flex-wrap justify-between mb-10">
+          {CategoryCardData.map((item, index) => (
+            <div key={index} className="flex md:mx-auto ">
+              <CategoryCard data={item} key={index} />
+            </div>
+          ))}
+        </div>
+
+        {/*ProductCard*/}
         <div className="flex flex-wrap justify-between ">
           {bestSellerData.products.map((item, index) => (
             <div

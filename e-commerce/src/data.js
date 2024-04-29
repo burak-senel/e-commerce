@@ -170,27 +170,27 @@ export const featuredPostCardData = {
 export const CategoryCardData = [
   {
     categoryName: "CLOTHS",
-    itemCount: 5,
+    items: 5,
     imageUrl: catImg1,
   },
   {
-    categoryName: "CLOTHS",
-    itemCount: 5,
+    categoryName: "DENEME",
+    items: 5,
     imageUrl: catImg2,
   },
   {
-    categoryName: "CLOTHS",
-    itemCount: 5,
+    categoryName: "FALAN",
+    items: 5,
     imageUrl: catImg3,
   },
   {
-    categoryName: "CLOTHS",
-    itemCount: 5,
+    categoryName: "FİLAN",
+    items: 5,
     imageUrl: catImg4,
   },
   {
-    categoryName: "CLOTHS",
-    itemCount: 5,
+    categoryName: "ITEMS",
+    items: 5,
     imageUrl: catImg5,
   },
 ];
