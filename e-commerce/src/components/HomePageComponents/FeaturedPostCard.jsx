@@ -7,7 +7,7 @@ function FeaturedPostCard({ data, index }) {
       <img src={data.imageUrl} className="w-[348px] h-[300px] object-cover" />
       <div className="flex flex-col mx-2 gap-4">
         <div className="flex flex-row gap-4 text-sm ">
-          <span className="text-[#8EC2F2]">{data.google}</span> 
+          <span className="text-[#8EC2F2]">{data.google}</span>
           <span className="text-secondarygray">{data.trending}</span>
           <span className="text-secondarygray">{data.new}</span>
         </div>
@@ -17,7 +17,7 @@ function FeaturedPostCard({ data, index }) {
         </p>
         <div className="flex flex-row justify-between">
           <div className="flex flex-row items-center">
-            <i className="fa-sharp fa-regular fa-alarm-clock text-buttonblue"></i>
+            <i className="fa-regular fa-clock text-buttonblue"></i>
             <span className="ml-2 text-secondarygray text-sm">{data.date}</span>
           </div>
           <div className="flex flex-row items-center">
