@@ -9,7 +9,7 @@ function Header() {
     <>
       {/* NavbarTop */}
       <div className="max-w-full bg-[#252B42] md:hidden">
-        <div className="flex flex-row flex-wrap md:flex-col max-w-[1440px] mx-auto justify-between items-center  min-h-[58px] px-[1.5em]">
+        <div className="flex flex-row flex-wrap md:flex-col max-w-[1100px] mx-auto justify-between items-center  min-h-[58px]">
           <div className="flex items-center gap-[1.5rem] ">
             <div className="inline-flex  items-center gap-[0.25rem]">
               <i className="fa-solid fa-phone text-white size-4"></i>
@@ -39,7 +39,7 @@ function Header() {
         </div>
       </div>
       {/* NavbarBottom */}
-      <div className="flex justify-between items-center px-[1.5em] max-w-[1440px] mx-auto md:flex-col flex-wrap">
+      <div className="flex justify-between items-center  max-w-[1100px] mx-auto md:flex-col flex-wrap">
         <nav className="inline-flex items-center gap-[2rem] w-full justify-between md:flex-wrap">
           <div className="flex gap-[2rem]">
             <div className="flex py-4  md:inline-flex">
