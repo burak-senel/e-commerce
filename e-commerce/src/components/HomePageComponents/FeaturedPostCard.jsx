@@ -4,14 +4,10 @@ import { Link } from "react-router-dom";
 function FeaturedPostCard({ data, index }) {
   return (
     <div className="flex flex-col max-w-[340px] h-[606px] tracking-[0.2px] gap-4 shadow-md">
-      <img
-        src={data.imageUrl}
-        alt={index}
-        className="w-[348px] h-[300px] object-cover"
-      />
+      <img src={data.imageUrl} className="w-[348px] h-[300px] object-cover" />
       <div className="flex flex-col mx-2 gap-4">
         <div className="flex flex-row gap-4 text-sm ">
-          <span className="text-[#8EC2F2]">{data.google}</span>
+          <span className="text-[#8EC2F2]">{data.google}</span> 
           <span className="text-secondarygray">{data.trending}</span>
           <span className="text-secondarygray">{data.new}</span>
         </div>
