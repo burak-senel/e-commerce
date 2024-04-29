@@ -2,11 +2,18 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
+    fontFamily: {
+      montserrat: ["Montserrat"],
+    },
     extend: {
-      fontFamily: {
-        montserrat: ["Montserrat"],
+      colors: {
+        secondarygray: "#737373",
+        productgreen: "#23856D",
+        mutedgray: "#BDBDBD",
+        buttongreen: "#2DC071",
+        buttonblue: "#23A6F0",
+        textcolor: "#252B42",
       },
-      colors: {},
     },
     screens: {
       "2xl": { max: "1535px" },
