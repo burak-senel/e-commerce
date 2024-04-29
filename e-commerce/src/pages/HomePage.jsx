@@ -4,6 +4,7 @@ import EditorsPick from "../layout/HomePageLayout/EditorsPick";
 import BestSeller from "../layout/HomePageLayout/BestSeller";
 import SliderBottom from "../components/HomePageComponents/SliderBottom";
 import BottomBlog from "../layout/HomePageLayout/BottomBlog";
+import FeaturedPost from "../layout/HomePageLayout/FeaturedPost";
 
 function HomePage() {
   return (
@@ -13,6 +14,7 @@ function HomePage() {
       <BestSeller />
       <SliderBottom />
       <BottomBlog />
+      <FeaturedPost />
     </>
   );
 }

@@ -12,6 +12,7 @@ export default {
         mutedgray: "#BDBDBD",
         buttongreen: "#2DC071",
         buttonblue: "#23A6F0",
+        textcolor: "#252B42",
       },
     },
     screens: {

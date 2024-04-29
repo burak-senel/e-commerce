@@ -10,6 +10,9 @@ import bestsellerpic5 from "./assets/HomeAssets/bestsellerpics/pic5.jpeg";
 import bestsellerpic6 from "./assets/HomeAssets/bestsellerpics/pic6.jpeg";
 import bestsellerpic7 from "./assets/HomeAssets/bestsellerpics/pic7.jpeg";
 import bestsellerpic8 from "./assets/HomeAssets/bestsellerpics/pic8.jpeg";
+import img1 from "./assets/HomeAssets/featuredPosts/img1.jpeg";
+import img2 from "./assets/HomeAssets/featuredPosts/img2.jpeg";
+import img3 from "./assets/HomeAssets/featuredPosts/img3.jpeg";
 export const footerData = {
   brandName: "xBoutique",
   copyright: "  Made With Love By Burak All Right Reserved",
@@ -118,6 +121,44 @@ export const bestSellerData = {
       department: "English Department",
       price: "$16.48",
       salePrice: "$6.48",
+    },
+  ],
+};
+
+export const featuredPostCardData = {
+  posts: [
+    {
+      title: "Loudest à la Madison #1 (L'integral)",
+      date: "22 April 2024",
+      comments: "10 comments",
+      description:
+        "We focus on ergonomics and meeting you where you work. It's only a keystroke away.",
+      imageUrl: img1,
+      google: "Google",
+      trending: "Trending",
+      new: "New",
+    },
+    {
+      title: "Loudest à la Madison #1 (L'integral)",
+      date: "25 April 2024",
+      comments: "10 comments",
+      description:
+        "We focus on ergonomics and meeting you where you work. It's only a keystroke away.",
+      imageUrl: img2,
+      google: "Google",
+      trending: "Trending",
+      new: "New",
+    },
+    {
+      title: "Loudest à la Madison #1 (L'integral)",
+      date: "30 April 2024",
+      comments: "10 comments",
+      description:
+        "We focus on ergonomics and meeting you where you work. It's only a keystroke away.",
+      imageUrl: img3,
+      google: "Google",
+      trending: "Trending",
+      new: "New",
     },
   ],
 };

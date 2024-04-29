@@ -45,7 +45,7 @@ export const Footer = () => {
               <input
                 type="email"
                 placeholder="  Your Email"
-                className="py-4 max-h-[58px] border border-solid bg-[#F9F9F9] rounded-l-md text-primary-gray border-[#E6E6E6] w-full"
+                className="py-4 max-h-[58px] border border-solid bg-[#F9F9F9] rounded-l-md text-secondarygray border-[#E6E6E6] w-full"
               />
               <button
                 type="submit"
@@ -58,7 +58,7 @@ export const Footer = () => {
         </div>
       </div>
       <div className="bg-[#FAFAFA]">
-        <div className="max-w-[1050px] mx-auto md:max-w-[340px] flex font-bold text-primary-gray text-sm py-6 md:max-w-42 md:text-center md:mx-auto">
+        <div className="max-w-[1050px] mx-auto md:max-w-[340px] flex font-bold text-secondarygray text-sm py-6 md:max-w-42 md:text-center md:mx-auto">
           <h6>{footerData.copyright}</h6>
         </div>
       </div>
