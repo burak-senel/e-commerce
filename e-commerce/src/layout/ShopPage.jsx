@@ -32,6 +32,30 @@ function ShopPage() {
             </div>
           ))}
         </div>
+        {/* FilterSection*/}
+        <div className="flex justify-between py-3 max-w-[1100px] mx-auto mb-8 flex-wrap md:flex-col md:items-center md:gap-8 md:mb-16">
+          <span className="flex font-bold text-secondarygray text-sm items-center">
+            Showing all results
+          </span>
+          <div className="flex justify-center items-center gap-4">
+            <span className="text-secondarygray font-bold text-sm">Views:</span>
+            <i className="fa-solid fa-grip text-xl"></i>{" "}
+            <i className="fa-solid fa-list text-secondarygray"></i>
+          </div>
+          <div className="flex flex-row max-w-[1440px] gap-4 md:flex-wrap  md:justify-around">
+            <select className="flex py-3  bg-[#F9F9F9] px-4 border-[#DDDDDD] border rounded  text-secondarygray text-sm">
+              <option value={""} disabled selected>
+                Popularity
+              </option>
+              <option value="price:asc">Price:Asc</option>
+              <option value="price:desc">Price:Desc</option>
+            </select>
+
+            <button className="flex items-center bg-buttonblue px-6 rounded text-sm text-white font-bold">
+              Filter
+            </button>
+          </div>
+        </div>
 
         {/*ProductCard*/}
         <div className="flex flex-wrap justify-between ">
@@ -43,6 +67,24 @@ function ShopPage() {
               <ProductCard data={item} key={index} />
             </div>
           ))}
+        </div>
+        {/*PaginationSection */}
+        <div className="flex justify-center py-4">
+          <span className="border-mutedgray border rounded-l-lg p-3 text-mutedgray bg-[#F3F3F3] font-medium">
+            First
+          </span>
+          <span className="border-mutedgray border p-3 text-buttonblue font-medium">
+            1
+          </span>
+          <span className="border-mutedgray border p-3 bg-buttonblue text-white font-medium">
+            2
+          </span>
+          <span className="border-mutedgray border p-3 text-buttonblue font-medium">
+            3
+          </span>
+          <span className="border border-mutedgray rounded-r-lg p-3 font-medium text-buttonblue">
+            Next
+          </span>
         </div>
         <FooterClients />
       </div>
