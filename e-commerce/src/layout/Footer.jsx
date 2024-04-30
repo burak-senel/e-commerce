@@ -4,7 +4,7 @@ export const Footer = () => {
   const { footerData } = useData();
   return (
     <>
-      <div className="bg-[#FAFAFA]">
+      <div className="">
         <div className="max-w-[1050px] mx-auto md:max-w-[340px] flex flex-row justify-between w-full py-10 md:flex-col gap-6 ">
           <div>
             <h3 className="font-bold text-2xl	">{footerData.brandName}</h3>

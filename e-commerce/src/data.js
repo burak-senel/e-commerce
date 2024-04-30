@@ -13,6 +13,11 @@ import bestsellerpic8 from "./assets/HomeAssets/bestsellerpics/pic8.jpeg";
 import img1 from "./assets/HomeAssets/featuredPosts/img1.jpeg";
 import img2 from "./assets/HomeAssets/featuredPosts/img2.jpeg";
 import img3 from "./assets/HomeAssets/featuredPosts/img3.jpeg";
+import catImg1 from "./assets/CategoryCard/catImg1.jpeg";
+import catImg2 from "./assets/CategoryCard/catImg2.jpeg";
+import catImg3 from "./assets/CategoryCard/catImg3.jpeg";
+import catImg4 from "./assets/CategoryCard/catImg4.jpeg";
+import catImg5 from "./assets/CategoryCard/catImg5.jpeg";
 export const footerData = {
   brandName: "xBoutique",
   copyright: "  Made With Love By Burak All Right Reserved",
@@ -162,3 +167,30 @@ export const featuredPostCardData = {
     },
   ],
 };
+export const CategoryCardData = [
+  {
+    categoryName: "CLOTHS",
+    items: 5,
+    imageUrl: catImg1,
+  },
+  {
+    categoryName: "DENEME",
+    items: 5,
+    imageUrl: catImg2,
+  },
+  {
+    categoryName: "FALAN",
+    items: 5,
+    imageUrl: catImg3,
+  },
+  {
+    categoryName: "FİLAN",
+    items: 5,
+    imageUrl: catImg4,
+  },
+  {
+    categoryName: "ITEMS",
+    items: 5,
+    imageUrl: catImg5,
+  },
+];
