@@ -20,7 +20,10 @@ function BestSeller() {
       </div>
       <div className="flex flex-wrap justify-between mx-2">
         {bestSellerData.products.map((item, index) => (
-          <div key={index} className="flex flex-row max-w-60 md:mx-auto mb-5">
+          <div
+            key={index}
+            className="flex flex-row max-w-60 md:mx-auto mb-5"
+          >
             <ProductCard data={item} key={index} />
           </div>
         ))}
