@@ -2,7 +2,7 @@ import React from "react";
 import img from "../../assets/ContactPage/contactimg.png";
 function ContactTop() {
   return (
-    <div className="flex flex-row  gap-4 justify-between md:flex-wrap md:text-center max-w-[1100px] mx-auto ">
+    <div className="flex flex-row  gap-4 justify-between md:flex-wrap md:text-center max-w-[1100px] mx-auto mt-2">
       {/* Sol Div */}
       <div className="flex flex-col font-bold justify-center gap-8 md:w-[342px] mx-auto md:items-center">
         <h5 className="text-base text-textcolor">CONTACT US</h5>
@@ -38,9 +38,9 @@ function ContactTop() {
           alt="contactImg"
           className="md:w-[375px] md:min-h-[440px] min-h-[826px] w-[571px] object-cover z-0 "
         />
-        <div className="-z-10 bg-[#FFE9EA] w-[78px] h-[78px] rounded-full absolute left-0 top-0"></div>
+        <div className="-z-10 bg-[#FFE9EA] md:w-[48px] md:h-[48px] w-[78px] h-[78px] rounded-full absolute left-0 top-0"></div>
         <div className="-z-10 bg-[#FFE9EA] md:w-[295px] md:h-[295px] w-[480px] h-[480px] rounded-full absolute left-5 top-14"></div>
-        <div className="-z-10 bg-[#FFE9EA] w-[30px] h-[30px] rounded-full absolute right-0 top-36"></div>
+        <div className="-z-10 bg-[#FFE9EA] md:w-[18px] md:h-[18px] w-[30px] h-[30px] rounded-full absolute right-0 top-36"></div>
       </div>
     </div>
   );
