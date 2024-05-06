@@ -18,6 +18,7 @@ import catImg2 from "./assets/CategoryCard/catImg2.jpeg";
 import catImg3 from "./assets/CategoryCard/catImg3.jpeg";
 import catImg4 from "./assets/CategoryCard/catImg4.jpeg";
 import catImg5 from "./assets/CategoryCard/catImg5.jpeg";
+import teamImg from "./assets/teamcard.jpeg";
 export const footerData = {
   brandName: "xBoutique",
   copyright: "  Made With Love By Burak All Right Reserved",
@@ -194,3 +195,10 @@ export const CategoryCardData = [
     imageUrl: catImg5,
   },
 ];
+export const aboutTeam = {
+  members: [
+    { name: "Erhan Fırat", job: "Project Owner", imageURL: teamImg },
+    { name: "Gökhan Özdemir", job: "Scrum Master", imageURL: teamImg },
+    { name: "Burak Şenel", job: "Full Stack Developer", imageURL: teamImg },
+  ],
+};

@@ -6,6 +6,7 @@ import { Route, Routes } from "react-router-dom";
 import ShopPage from "./layout/ShopPage";
 import ContactPage from "./pages/ContactPage";
 import ProductPage from "./pages/ProductPage";
+import AboutPage from "./pages/AboutPage";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/shop" element={<ShopPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/detail" element={<ProductPage />} />
+        <Route path="/about" element={<AboutPage />} />
       </Routes>
       <Footer />
     </DataContextProvider>
