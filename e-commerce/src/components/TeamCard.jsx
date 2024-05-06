@@ -1,7 +1,7 @@
-function TeamCard({ data, index }) {
+function TeamCard({ data }) {
   return (
     <div className="flex flex-col gap-4 tracking-[0.2px] min-h-[315px] ">
-      <img src={data.imageURL} alt={index} />
+      <img src={data.imageURL} />
       <div className="flex flex-col items-center gap-4 font-bold">
         <p className="text-textcolor">{data.name}</p>
         <p className="text-sm text-secondarygray">{data.job}</p>

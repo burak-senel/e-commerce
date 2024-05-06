@@ -62,7 +62,7 @@ function AboutMid() {
         <div className="flex flex-row gap-10 py-20 md:flex-wrap">
           {aboutTeam.members.map((item, index) => (
             <div key={index}>
-              <TeamCard data={item} index={index} />
+              <TeamCard data={item} />
             </div>
           ))}
         </div>
