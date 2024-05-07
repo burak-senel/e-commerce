@@ -7,7 +7,7 @@ function TeamCards() {
 
   return (
     <div className="flex flex-col items-center gap-10 max-w-[1100px] mx-auto">
-      <h3 className="font-bold text-textcolor text-5xl mb-4 py-16 md:py-8 md:max-w-[310px] md:items-center md:text-center">
+      <h3 className="font-bold text-textcolor text-4xl mb-4 py-16 md:py-8 md:max-w-[310px] md:items-center md:text-center">
         Meet Our Team
       </h3>
 

@@ -4,18 +4,21 @@ import img2 from "../../assets/TeamPage/team2.jpeg";
 import img3 from "../../assets/TeamPage/team3.jpeg";
 import img4 from "../../assets/TeamPage/team4.jpeg";
 import img5 from "../../assets/TeamPage/team5.jpeg";
+import { Link } from "react-router-dom";
 function TeamTop() {
   return (
     <div className="flex flex-col">
       <div className="flex flex-col items-center font-bold gap-6 my-16 md:text-center">
         <h5 className="text-secondarygray text-base">WHAT WE DO</h5>
-        <h3 className="text-textcolor text-6xl tracking-[0.2px] md:text-4xl md:max-w-80">
+        <h3 className="text-textcolor text-5xl tracking-[0.2px] md:text-4xl md:max-w-80">
           Innovation tailored for you
         </h3>
         <div className="flex flex-row font-bold gap-3 items-center">
-          <span className="text-textcolor text-sm">Home</span>
-          <span className="text-mute-color text-2xl">{">"}</span>
-          <span className="text-mute-color text-sm">Team</span>
+          <Link to={"/"} className="text-textcolor text-sm">
+            Home
+          </Link>
+          <i className="fa-solid fa-chevron-right text-mutedgray"></i>{" "}
+          <span className="text-mutedgray text-sm">Team</span>
         </div>
       </div>
       {/* Pictures */}
