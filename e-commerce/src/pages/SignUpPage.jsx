@@ -2,20 +2,42 @@ import React, { useState, useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import axios from "axios";
 import { AxiosInstance } from "../axios/axios";
+import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import LoadingSpinner from "../components/Loading";
+
+const formInitialData = {
+  name: "",
+  email: "",
+  password: "",
+  confirmPassword: "",
+  role_id: "3",
+  store: {
+    name: "",
+    phone: "",
+    tax_no: "",
+    bank_account: "",
+  },
+};
 
 function SignUpPage() {
-  const { handleSubmit, control, errors, formState, watch } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    watch,
+  } = useForm({
+    defaultValues: formInitialData,
+  });
   const [roles, setRoles] = useState([]);
   const [loading, setLoading] = useState(false);
   const axiosInstance = AxiosInstance();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // Fetch roles on component mount
     fetchRoles();
   }, []);
-  const instance = axios.create({
-    baseURL: "https://workintech-fe-ecommerce.onrender.com",
-  });
 
   const fetchRoles = async () => {
     try {
@@ -26,187 +48,221 @@ function SignUpPage() {
       console.error("Error fetching roles:", error);
     }
   };
-  const onSubmit = async (data) => {
-    try {
-      setLoading(true);
-      // Make POST request to /signup endpoint
-      // Redirect on successful submission
-      // Assuming you have a method to handle redirection
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      setLoading(false);
-    }
+
+  const onSubmit = (data) => {
+    delete data.confirmPassword;
+    setLoading(true);
+    axiosInstance
+      .post("/signup", data)
+      .then((res) => {
+        toast.success(
+          "You need to click link in email to activate your account!",
+          { position: "top-right" }
+        );
+        setLoading(false);
+        //Önceki sayfaya yönlendir.
+        setTimeout(() => navigate(-1), 5000);
+      })
+      .catch((err) => {
+        console.log("Error:", err);
+        setLoading(false);
+        toast.error(
+          "An error occurred while submitting the form. Please try again.",
+          { position: "top-right" }
+        );
+      });
+    console.log(data);
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        <label>Name:</label>
-        <Controller
-          name="name"
-          control={control}
-          rules={{
-            required: "Name is required",
+    <div className="flex flex-col max-w-[1440px] mx-auto my-16 ">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex flex-col mx-auto w-[800px] sm:w-full gap-3 md:w-full"
+      >
+        <label htmlFor="name" className="text-xl">
+          Name
+        </label>
+        <input
+          type="text"
+          id="name"
+          className="border rounded-md py-2 px-2 "
+          placeholder="Enter your name"
+          {...register("name", {
+            required: "Name field cannot be empty.",
             minLength: {
               value: 3,
-              message: "Name must be at least 3 characters",
+              message: "Name must be at least 3 characters long.",
             },
-          }}
-          render={({ field }) => <input {...field} />}
+          })}
         />
-        {errors?.name && <span>{errors.name.message}</span>}
-      </div>
+        <p className="text-red-500">{errors.name?.message}</p>
 
-      <div>
-        <label>Email:</label>
-        <Controller
-          name="email"
-          control={control}
-          rules={{
-            required: "Email is required",
-            pattern: { value: /^\S+@\S+$/, message: "Invalid email address" },
-          }}
-          render={({ field }) => <input {...field} />}
+        <label htmlFor="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          className="border rounded-md py-2 px-2"
+          placeholder="Enter your email"
+          {...register("email", {
+            required: "Email field cannot be empty.",
+            pattern: {
+              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+              message: "Invalid email address.",
+            },
+          })}
         />
-        {errors?.email && <span>{errors.email.message}</span>}
-      </div>
+        <p className="text-red-500">{errors.email?.message}</p>
 
-      <div>
-        <label>Password:</label>
-        <Controller
-          name="password"
-          control={control}
-          rules={{
-            required: "Password is required",
+        <label htmlFor="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          className="border rounded-md py-2 px-2"
+          placeholder="Enter your password"
+          {...register("password", {
+            required: "Password field cannot be empty.",
             minLength: {
               value: 8,
-              message: "Password must be at least 8 characters",
+              message: "Password must be at least 8 characters long.",
+            },
+            pattern: {
+              value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/,
+              message:
+                "Password must contain at least one lowercase letter, one uppercase letter, and one number.",
+            },
+          })}
+        />
+        <p className="text-red-500">{errors.password?.message}</p>
+
+        <label htmlFor="confirmPassword">Confirm Password</label>
+        <input
+          type="password"
+          id="confirmPassword"
+          className="border rounded-md py-2 px-2"
+          placeholder="Confirm your password"
+          {...register("confirmPassword", {
+            required: "Please confirm your password.",
+            minLength: {
+              value: 8,
+              message: "Password must be at least 8 characters long.",
+            },
+            pattern: {
+              value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/,
+              message:
+                "Password must contain at least one lowercase letter, one uppercase letter, and one number.",
             },
             validate: (value) =>
-              /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
-                value
-              ) ||
-              "Password must include at least one uppercase letter, one lowercase letter, one number, and one special character",
-          }}
-          render={({ field }) => <input type="password" {...field} />}
+              value === watch("password") || "Passwords do not match.",
+          })}
         />
-        {errors?.password && <span>{errors.password.message}</span>}
-      </div>
+        <p className="text-red-500">{errors.confirmPassword?.message}</p>
 
-      <div>
-        <label>Confirm Password:</label>
-        <Controller
-          name="confirmPassword"
-          control={control}
-          rules={{
-            required: "Please confirm your password",
-            validate: (value) =>
-              value === watch("password") || "Passwords do not match",
-          }}
-          render={({ field }) => <input type="password" {...field} />}
-        />
-        {errors?.confirmPassword && (
-          <span>{errors.confirmPassword.message}</span>
-        )}
-      </div>
+        {/* rol mapleme. */}
+        <label htmlFor="role_id">Choose your role</label>
+        <select
+          id="role_id"
+          className="border rounded-md py-2  px-2"
+          {...register("role_id")}
+          value={watch("role_id") || formInitialData.role_id}
+        >
+          {roles.map((item) => {
+            return (
+              <option value={item.id} id={item.id} key={item.id}>
+                {item.name}
+              </option>
+            );
+          })}
+        </select>
 
-      <div>
-        <label>Role:</label>
-        <Controller
-          name="role_id"
-          control={control}
-          rules={{ required: "Role is required" }}
-          render={({ field }) => (
-            <select {...field}>
-              {roles.map((role) => (
-                <option key={role.id} value={role.id}>
-                  {role.name}
-                </option>
-              ))}
-            </select>
-          )}
-        />
-        {errors?.role_id && <span>{errors.role_id.message}</span>}
-      </div>
-
-      {watch("role_id") === "2  " && (
-        <>
-          <div>
-            <label>Store Name:</label>
-            <Controller
-              name="store.name"
-              control={control}
-              rules={{
-                required: "Store name is required",
+        {watch("role_id") === "2" && (
+          <>
+            <label htmlFor="storeName">Store Name</label>
+            <input
+              type="text"
+              id="storeName"
+              className="border rounded-md py-2"
+              {...register("store.name", {
+                required: "Store name field cannot be empty.",
                 minLength: {
                   value: 3,
-                  message: "Store name must be at least 3 characters",
+                  message: "Store name must be at least 3 characters long.",
                 },
-              }}
-              render={({ field }) => <input {...field} />}
+              })}
             />
-            {errors.store?.name && <span>{errors.store.name.message}</span>}
-          </div>
-
-          <div>
-            <label>Store Phone:</label>
-            <Controller
-              name="store.phone"
-              control={control}
-              rules={{
-                required: "Store phone number is required",
+            {errors.store?.name && (
+              <span className="text-red-500">{errors.store?.name.message}</span>
+            )}
+            <label htmlFor="storePhone">Store Phone Number</label>
+            <input
+              type="text"
+              id="storePhone"
+              className="border rounded-md py-2"
+              {...register("store.phone", {
+                required: "Store phone number is required.",
                 pattern: {
                   value: /^[0-9]{10}$/, // Assuming 10 digits for Turkey phone numbers
-                  message: "Invalid phone number",
+                  message: "Invalid phone number.",
                 },
-              }}
-              render={({ field }) => <input {...field} />}
+              })}
             />
-            {errors.store?.phone && <span>{errors.store.phone.message}</span>}
-          </div>
+            {errors.store?.phone && (
+              <span className="text-red-500">
+                {errors.store?.phone.message}
+              </span>
+            )}
 
-          <div>
-            <label>Store Tax ID:</label>
-            <Controller
-              name="store.tax_no"
-              control={control}
-              rules={{
-                required: "Tax ID is required",
+            <label htmlFor="store.tax">Store Tax ID</label>
+            <input
+              type="text"
+              id="storeTax"
+              className="border rounded-md py-2"
+              {...register("store.tax_no", {
+                required: "Tax ID is required.",
                 pattern: {
                   value: /^T\d{4}V\d{6}$/, // Assuming the pattern "TXXXXVXXXXXX"
-                  message: "Invalid tax ID format",
+                  message: "Invalid tax ID format.",
                 },
-              }}
-              render={({ field }) => <input {...field} />}
+              })}
             />
-            {errors.store?.tax_no && <span>{errors.store.tax_no.message}</span>}
-          </div>
+            {errors.store?.tax_no && (
+              <span className="text-red-500">
+                {errors.store?.tax_no.message}
+              </span>
+            )}
 
-          <div>
-            <label>Store Bank Account:</label>
-            <Controller
-              name="store.bank_account"
-              control={control}
-              rules={{
-                required: "Bank account is required",
+            <label htmlFor="storeIban">Store İban Numarası</label>
+            <input
+              type="text"
+              id="storeIban"
+              className="border rounded-md py-2"
+              {...register("store.bank_account", {
+                required: "IBAN is required.",
                 pattern: {
                   value: /^TR\d{2}\d{4}\d{4}\d{4}\d{4}\d{4}\d{2}$/, // Assuming valid IBAN format for Turkey
-                  message: "Invalid IBAN format",
+                  message: "Invalid IBAN format.",
                 },
-              }}
-              render={({ field }) => <input {...field} />}
+              })}
             />
             {errors.store?.bank_account && (
-              <span>{errors.store.bank_account.message}</span>
+              <span className="text-red-500">
+                {errors.store?.bank_account.message}
+              </span>
             )}
-          </div>
-        </>
-      )}
-
-      <button type="submit" disabled={loading}>
-        {loading ? "Submitting..." : "Submit"}
-      </button>
-    </form>
+          </>
+        )}
+        <ToastContainer position="top-right" autoClose={7000} />
+        <div className="flex justify-center">
+          <button
+            type="submit"
+            className="py-3 px-12 rounded-md bg-buttonblue text-white font-bold"
+            disabled={loading}
+          >
+            {loading ? <LoadingSpinner /> : "Submit"}
+          </button>
+        </div>
+      </form>
+    </div>
   );
 }
 export default SignUpPage;
