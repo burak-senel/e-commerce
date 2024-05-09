@@ -75,10 +75,10 @@ function SignUpPage() {
   };
 
   return (
-    <div className="flex flex-col max-w-[1440px] mx-auto my-16 ">
+    <div className="flex flex-col max-w-[1100px] mx-auto my-16 ">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col mx-auto w-[800px] sm:w-full gap-3 md:w-full"
+        className="flex flex-col mx-auto w-[800px] md:w-[300px] gap-3"
       >
         <label htmlFor="name" className="text-xl">
           Name
