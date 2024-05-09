@@ -8,6 +8,7 @@ import ContactPage from "./pages/ContactPage";
 import ProductPage from "./pages/ProductPage";
 import AboutPage from "./pages/AboutPage";
 import TeamPage from "./pages/TeamPage";
+import SignUpPage from "./pages/SignUpPage";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/detail" element={<ProductPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/team" element={<TeamPage />} />
+        <Route path="/signup" element={<SignUpPage />} />
       </Routes>
       <Footer />
     </DataContextProvider>
