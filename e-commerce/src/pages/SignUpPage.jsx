@@ -181,7 +181,7 @@ function SignUpPage() {
             <input
               type="text"
               id="storeName"
-              className="border rounded-md py-2"
+              className="border rounded-md py-2  px-2"
               {...register("store.name", {
                 required: "Store name field cannot be empty.",
                 minLength: {
@@ -197,7 +197,7 @@ function SignUpPage() {
             <input
               type="text"
               id="storePhone"
-              className="border rounded-md py-2"
+              className="border rounded-md py-2  px-2"
               {...register("store.phone", {
                 required: "Store phone number is required.",
                 pattern: {
@@ -216,7 +216,7 @@ function SignUpPage() {
             <input
               type="text"
               id="storeTax"
-              className="border rounded-md py-2"
+              className="border rounded-md py-2  px-2"
               {...register("store.tax_no", {
                 required: "Tax ID is required.",
                 pattern: {
@@ -235,7 +235,7 @@ function SignUpPage() {
             <input
               type="text"
               id="storeIban"
-              className="border rounded-md py-2"
+              className="border rounded-md py-2  px-2"
               {...register("store.bank_account", {
                 required: "IBAN is required.",
                 pattern: {
