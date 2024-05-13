@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoadingSpinner from "../components/Loading";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchRoles, setRoles } from "../store/actions/UserActions";
 
 const formInitialData = {
   name: "",
@@ -30,24 +32,15 @@ function SignUpPage() {
   } = useForm({
     defaultValues: formInitialData,
   });
-  const [roles, setRoles] = useState([]);
   const [loading, setLoading] = useState(false);
   const axiosInstance = AxiosInstance();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const roles = useSelector((store) => store.user.roles);
 
   useEffect(() => {
-    fetchRoles();
-  }, []);
-
-  const fetchRoles = async () => {
-    try {
-      const response = await axiosInstance.get("/roles");
-      setRoles(response.data);
-      console.log(response.data);
-    } catch (error) {
-      console.error("Error fetching roles:", error);
-    }
-  };
+    dispatch(fetchRoles()) // fetchRoles fonksiyonunu çağırıyoruz
+  }, []); // useEffect'i sadece bir kez çağırmak için boş bağımlılık dizisi kullanıyoruz
 
   const onSubmit = (data) => {
     delete data.confirmPassword;
@@ -163,8 +156,9 @@ function SignUpPage() {
         <select
           id="role_id"
           className="border rounded-md py-2  px-2"
+
           {...register("role_id")}
-          value={watch("role_id") || formInitialData.role_id}
+          value={watch("role_id") || "formInitialData.role_id"}
         >
           {roles.map((item) => {
             return (
@@ -181,7 +175,7 @@ function SignUpPage() {
             <input
               type="text"
               id="storeName"
-              className="border rounded-md py-2"
+              className="border rounded-md py-2  px-2"
               {...register("store.name", {
                 required: "Store name field cannot be empty.",
                 minLength: {
@@ -197,7 +191,7 @@ function SignUpPage() {
             <input
               type="text"
               id="storePhone"
-              className="border rounded-md py-2"
+              className="border rounded-md py-2  px-2"
               {...register("store.phone", {
                 required: "Store phone number is required.",
                 pattern: {
@@ -216,7 +210,7 @@ function SignUpPage() {
             <input
               type="text"
               id="storeTax"
-              className="border rounded-md py-2"
+              className="border rounded-md py-2  px-2"
               {...register("store.tax_no", {
                 required: "Tax ID is required.",
                 pattern: {
@@ -235,7 +229,7 @@ function SignUpPage() {
             <input
               type="text"
               id="storeIban"
-              className="border rounded-md py-2"
+              className="border rounded-md py-2  px-2"
               {...register("store.bank_account", {
                 required: "IBAN is required.",
                 pattern: {
