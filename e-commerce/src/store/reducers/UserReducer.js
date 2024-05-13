@@ -1,4 +1,9 @@
-import { SET_LANGUAGE, SET_ROLES, SET_THEME, SET_USER } from "../actions/UserActions";
+import {
+  SET_LANGUAGE,
+  SET_ROLES,
+  SET_THEME,
+  SET_USER,
+} from "../actions/UserActions";
 
 const initialState = {
   user: {},
