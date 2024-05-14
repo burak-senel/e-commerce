@@ -3,11 +3,11 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import { userLogin } from "../store/actions/UserActions";
 
 const formInitialData = {
   email: "",
   password: "",
-  rememberMe: false,
 };
 
 function LoginPage() {
@@ -21,23 +21,17 @@ function LoginPage() {
   });
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [rememberMe, setRememberMe] = useState(false);
 
-  const onSubmit = (data) => {
-    // "Remember me" seçeneği işaretlendiğinde, token'i localStorage'e kaydet
-    if (data.rememberMe) {
-      localStorage.setItem("token", "your_token_here"); // Token'inizi buraya yerleştirin
-    } else {
-      localStorage.removeItem("token"); // "Remember me" seçeneği işaretli değilse, localStorage'daki token'i kaldır
-    }
-    dispatch(userLogin(data, navigate));
+  const onSubmit = (formData) => {
+    dispatch(userLogin(formData, navigate));
+    console.log("Login Data:", formData);
   };
 
   return (
     <div className="flex max-w-[300px] mx-auto py-24">
       <ToastContainer position="top-right" autoClose={5000} />
       <form
-        //onSubmit={handleSubmit(onSubmit)}
+        onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col w-full gap-3 "
       >
         <div className="flex flex-col w-full">
@@ -69,8 +63,13 @@ function LoginPage() {
           />
         </div>
         <div className="flex w-full">
-          <input type="checkbox" className="mr-2" id="rememberme"></input>
-          <label htmlFor="rememberme"> Remember me?</label>
+          <input
+            type="checkbox"
+            className="mr-2"
+            id="rememberMe"
+            {...register("rememberMe")}
+          ></input>
+          <label htmlFor="rememberMe"> Remember me?</label>
         </div>
         <button
           type="submit"

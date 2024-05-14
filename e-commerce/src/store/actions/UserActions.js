@@ -47,7 +47,9 @@ export const userLogin = (formData, navigate) => (dispatch) => {
     .post("/login", formData)
     .then((res) => {
       toast.success("Login Success!", { position: "top-right" });
-      localStorage.setItem("token", res.data.token);
+      if (formData.rememberMe) {
+        localStorage.setItem("token", res.data.token);
+      }
       dispatch(setUser(res.data));
       setTimeout(() => navigate("/"), 5000);
     })
