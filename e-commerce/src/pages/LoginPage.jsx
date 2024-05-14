@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -7,6 +7,7 @@ import { ToastContainer } from "react-toastify";
 const formInitialData = {
   email: "",
   password: "",
+  rememberMe: false,
 };
 
 function LoginPage() {
@@ -20,6 +21,17 @@ function LoginPage() {
   });
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [rememberMe, setRememberMe] = useState(false);
+
+  const onSubmit = (data) => {
+    // "Remember me" seçeneği işaretlendiğinde, token'i localStorage'e kaydet
+    if (data.rememberMe) {
+      localStorage.setItem("token", "your_token_here"); // Token'inizi buraya yerleştirin
+    } else {
+      localStorage.removeItem("token"); // "Remember me" seçeneği işaretli değilse, localStorage'daki token'i kaldır
+    }
+    dispatch(userLogin(data, navigate));
+  };
 
   return (
     <div className="flex max-w-[300px] mx-auto py-24">
