@@ -42,6 +42,7 @@ export const fetchRoles = () => (dispatch) => {
     })
     .catch((err) => console.log(err));
 };
+
 export const userLogin = (formData, navigate) => (dispatch) => {
   axiosInstance
     .post("/login", formData)
@@ -51,7 +52,7 @@ export const userLogin = (formData, navigate) => (dispatch) => {
         localStorage.setItem("token", res.data.token);
       }
       dispatch(setUser(res.data));
-      setTimeout(() => navigate("/"), 5000);
+      setTimeout(() => navigate("/"), 2000);
     })
     .catch((err) => {
       console.log(err);
