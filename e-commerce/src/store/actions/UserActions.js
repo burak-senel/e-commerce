@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { AxiosInstance } from "../../axios/axios";
 
 export const SET_USER = "SET_USER";
@@ -40,4 +41,23 @@ export const fetchRoles = () => (dispatch) => {
       dispatch(setRoles(res.data));
     })
     .catch((err) => console.log(err));
+};
+
+export const userLogin = (formData, navigate) => (dispatch) => {
+  axiosInstance
+    .post("/login", formData)
+    .then((res) => {
+      toast.success("Login Success!", { position: "top-right" });
+      if (formData.rememberMe) {
+        localStorage.setItem("token", res.data.token);
+      }
+      dispatch(setUser(res.data));
+      setTimeout(() => navigate("/"), 2000);
+    })
+    .catch((err) => {
+      console.log(err);
+      toast.error("Email or password is wrong!", {
+        position: "top-right",
+      });
+    });
 };

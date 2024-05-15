@@ -1,10 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import CryptoJS from "crypto-js";
 
 function Header() {
   const genericHamburgerLine = `h-1 w-6 my-1 rounded-full bg-black transition ease transform duration-300`;
   const [isOpen, setIsOpen] = useState(false);
-
+  const userData = useSelector((store) => store.user.user);
+  useEffect(() => {
+    if (userData.email) {
+      const hashedEmail = CryptoJS.SHA256(userData.email);
+      const gravatarUrl = `https://www.gravatar.com/avatar/${hashedEmail}`;
+      document.getElementById("gravatar-image").src = gravatarUrl;
+    }
+  }, [userData.email]);
   return (
     <>
       {/* NavbarTop */}
@@ -65,33 +74,60 @@ function Header() {
               <Link to={"/contact"}>Contact</Link>
               {/* Diğer menü öğeleri burada yer alacak */}
               <div className="flex gap-2 items-center text-[#23A6F0]">
-                <div className="flex justify-center items-center gap-2">
-                  <i className="fa-regular fa-user"></i>
-                  <Link to={"/login"}>
-                    <span className="cursor-pointer">Login</span>
+                {userData.email ? (
+                  <Link to="/" className="flex items-center">
+                    <div className="flex flex-row gap-2 items-center">
+                      <img
+                        id="gravatar-image"
+                        alt="Gravatar"
+                        className="rounded-full w-8 h-8"
+                      />
+                      <p>{userData.name}</p>
+                    </div>
                   </Link>
-                </div>
+                ) : (
+                  <>
+                    <div className="flex justify-center items-center gap-2">
+                      <i className="fa-regular fa-user"></i>
+                      <Link to={"/login"}>
+                        <span className="cursor-pointer">Login</span>
+                      </Link>
+                    </div>
+                    <span>/</span>
 
-                <span>/</span>
-
-                <Link to={"/signup"}>Register</Link>
+                    <Link to={"/signup"}>Register</Link>
+                  </>
+                )}
               </div>
             </div>
           )}
           <div className="inline-flex justify-end items-center text-[#23A6F0] gap-6">
             <div className="flex gap-2 items-center md:hidden">
-              <div className="flex justify-center items-center gap-2">
-                <i className="fa-regular fa-user"></i>
-                <Link to={"/login"}>
-                  <span className="cursor-pointer">Login</span>
+              {userData.email ? (
+                <Link to="/" className="flex items-center">
+                  <div className="flex flex-row gap-2 items-center">
+                    <img
+                      id="gravatar-image"
+                      alt="Gravatar"
+                      className="rounded-full w-8 h-8"
+                    />
+                    <p>{userData.name}</p>
+                  </div>
                 </Link>
-              </div>
-
-              <span>/</span>
-
-              <Link to={"/signup"}>Register</Link>
+              ) : (
+                <>
+                  <div className="flex justify-center items-center gap-2">
+                    <i className="fa-regular fa-user"></i>
+                    <Link to={"/login"}>
+                      <span className="cursor-pointer">Login</span>
+                    </Link>
+                  </div>
+                  <span>/</span>
+                  <Link to={"/signup"}>Register</Link>
+                </>
+              )}
             </div>
-            <div className="flex gap-4 flex-wrap md:w-full md:text-sBlack items-center">
+            <div className="flex gap-4 flex-wrap md:w-full md:text-textcolor items-center">
               <i className="size-5 fa-solid fa-magnifying-glass md:text-[#252B42]"></i>
               <i className="fa-solid fa-cart-shopping md:text-[#252B42]"></i>
               <i className="size-5 md:hidden fa-regular fa-heart"></i>
