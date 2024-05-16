@@ -61,3 +61,23 @@ export const userLogin = (formData, navigate) => (dispatch) => {
       });
     });
 };
+
+export const autoLogin = () => (dispatch) => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    axiosInstance
+      .get("/verify", {
+        headers: {
+          Authorization: token,
+        },
+      })
+      .then((res) => {
+        dispatch(setUser(res.data));
+        localStorage.setItem("token", token);
+      })
+      .catch((err) => {
+        console.log("Login Hata", err);
+        localStorage.removeItem("token");
+      });
+  }
+};
