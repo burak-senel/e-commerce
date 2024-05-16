@@ -10,8 +10,15 @@ import AboutPage from "./pages/AboutPage";
 import TeamPage from "./pages/TeamPage";
 import SignUpPage from "./pages/SignUpPage";
 import LoginPage from "./pages/LoginPage";
+import { useEffect } from "react";
+import { autoLogin } from "./store/actions/UserActions";
+import { useDispatch } from "react-redux";
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(autoLogin()); // autoLogin fonksiyonunu çağırıyoruz
+  }, []);
   return (
     <DataContextProvider>
       <Header />
