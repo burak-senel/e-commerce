@@ -39,7 +39,7 @@ function SignUpPage() {
   const roles = useSelector((store) => store.user.roles);
 
   useEffect(() => {
-    dispatch(fetchRoles()) // fetchRoles fonksiyonunu çağırıyoruz
+    dispatch(fetchRoles()); // fetchRoles fonksiyonunu çağırıyoruz
   }, []); // useEffect'i sadece bir kez çağırmak için boş bağımlılık dizisi kullanıyoruz
 
   const onSubmit = (data) => {
@@ -156,16 +156,20 @@ function SignUpPage() {
         <select
           id="role_id"
           className="border rounded-md py-2  px-2"
-
           {...register("role_id")}
           value={watch("role_id") || "formInitialData.role_id"}
         >
           {roles.map((item) => {
-            return (
-              <option value={item.id} id={item.id} key={item.id}>
-                {item.name}
-              </option>
-            );
+            // Sadece 2 ve 3 numaralı rolleri göster
+            if (item.id === 2 || item.id === 3) {
+              return (
+                <option value={item.id} id={item.id} key={item.id}>
+                  {item.name}
+                </option>
+              );
+            } else {
+              return null; // Diğer rolleri gösterme
+            }
           })}
         </select>
 
